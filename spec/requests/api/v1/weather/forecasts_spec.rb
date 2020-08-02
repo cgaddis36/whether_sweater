@@ -7,7 +7,8 @@ describe "As a frontend developer" do
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
-    require "pry"; binding.pry
-
+    expect(parsed_data[:data][:attributes][:current]).to_not be_nil
+    expect(parsed_data[:data][:attributes][:hourly]).to_not be_nil
+    expect(parsed_data[:data][:attributes][:daily]).to_not be_nil
   end
 end
