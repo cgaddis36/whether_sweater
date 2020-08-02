@@ -13,5 +13,3 @@ class Api::V1::WeatherController < ApplicationController
     parsed_data = service1.get_json(parsed)
   end
 end
-
-# /geocoding/v1/address?key=KEY&location=1600+Pennsylvania+Ave+NW,Washington,DC,20500

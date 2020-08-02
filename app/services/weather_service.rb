@@ -8,6 +8,3 @@ class WeatherService
     Faraday.new(url: 'https://api.openweathermap.org')
   end
 end
-
-# https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}
-# &exclude={part}&appid={YOUR API KEY}
