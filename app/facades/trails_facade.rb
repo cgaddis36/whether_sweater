@@ -8,7 +8,15 @@ class TrailsFacade
     temp = forecast["data"]["attributes"]["current"]["temp"]
     summary = forecast["data"]["attributes"]["current"]["weather"][0]["description"]
     service = TrailsService.new
-    parsed = service.get_json(@location.downcase)
+    trails = service.get_json(@location.downcase)
+    current_forecast = { location: @location, current_temp: temp.to_s, description: summary }
+    TrailsSerializer.new(trails)
+    current = current_forecast.to_json
+    trails = trails.to_json
+    x = JSON.parse(current)
+    y = JSON.parse(trails)
+    x[:trails] = y
+    x
   end
 
   private
@@ -18,5 +26,4 @@ class TrailsFacade
     forecast = forecast.to_json
     forecast = JSON.parse(forecast)
   end
-
 end
