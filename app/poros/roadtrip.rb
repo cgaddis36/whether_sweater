@@ -7,9 +7,4 @@ class Roadtrip
     @description = attributes[:description]
     @trails  = attributes[:trails]
   end
-
-  def distance_service
-    service = LocationService.new
-    service = service.get_directions(@start_location, @location)
-  end
 end
