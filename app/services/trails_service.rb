@@ -5,10 +5,8 @@ class TrailsService
     response = conn.get('/data/get-trails', {lat: lat_lng[:lat].to_s, lon: lat_lng[:lng].to_s, maxDistance: '50', key: ENV['HIKING_PROJECT_API_KEY']})
     parsed = JSON.parse(response.body, symbolize_names: true)
     trails = parsed[:trails].map do |trail|
-      Trail.new(trail)
+      Trail.new(trail, location)
     end
-    
-    require "pry"; binding.pry
   end
 
   private
