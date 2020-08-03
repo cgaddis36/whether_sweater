@@ -10,13 +10,15 @@ class TrailsFacade
     service = TrailsService.new
     trails = service.get_json(@location.downcase)
     current_forecast = { location: @location, current_temp: temp.to_s, description: summary }
-    TrailsSerializer.new(trails)
-    current = current_forecast.to_json
-    trails = trails.to_json
-    x = JSON.parse(current)
-    y = JSON.parse(trails)
-    x[:trails] = y
-    x
+    current_forecast[:trails] = trails.to_a
+    roadtrip = Roadtrip.new(current_forecast)
+    x = RoadtripSerializer.new(roadtrip)
+    # current = current_forecast.to_json
+    # trails = trails.to_json
+    # x = JSON.parse(current)
+    # y = JSON.parse(trails)
+    # x[:trails] = y
+    # x
   end
 
   private
