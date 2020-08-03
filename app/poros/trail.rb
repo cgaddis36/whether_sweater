@@ -3,6 +3,7 @@ class Trail
   def initialize(attributes, location)
     @id = nil
     @name = attributes[:name]
+    @difficulty = attributes[:difficulty]
     @summary = attributes[:summary]
     @location  = attributes[:location]
     @start_location = location
