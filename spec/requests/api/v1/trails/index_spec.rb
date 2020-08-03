@@ -7,9 +7,10 @@ describe 'as a developer' do
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
-    expect(parsed_data[:data][:attributes][:location]).to eq('denver,co')
-    expect(parsed_data[:data][:attributes][:location]).to eq('denver,co')
-    expect(parsed_data[:trails].count).to eq(5)
-    expect(parsed_data[:trails]["difficulty"]).to_not be_nil
+    expect(parsed_data[:location]).to eq('denver,co')
+    expect(parsed_data[:current_temp]).to_not be_nil
+    expect(parsed_data[:description]).to_not be_nil
+    expect(parsed_data[:trails].count).to eq(10)
+    expect(parsed_data[:trails][0][:difficulty]).to_not be_nil
   end
 end
