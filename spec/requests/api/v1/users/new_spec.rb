@@ -26,8 +26,8 @@ describe 'as a frontend developer' do
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
-    expect(parsed_data[:data][:id]).to be_nil
-
+    expect(parsed_data[0]).to eq("Password confirmation Passwords should match")
+    expect(parsed_data[-1]).to eq("Password confirmation doesn't match Password")
 
     expect(User.all.count).to eq(0)
   end
