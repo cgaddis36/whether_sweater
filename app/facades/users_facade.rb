@@ -7,6 +7,6 @@ class UsersFacade
     if @user_params["password"] == @user_params["password_confirmation"]
       user = User.create(email: @user_params["email"], api_key: SecureRandom.uuid)
     end
-    x = UsersSerializer.new(user)
+    UsersSerializer.new(user)
   end
 end
