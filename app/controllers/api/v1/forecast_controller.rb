@@ -1,5 +1,5 @@
-class Api::V1::WeatherController < ApplicationController
-  def index
+class Api::V1::ForecastController < ApplicationController
+  def show
     render json: ForecastFacade.new(params[:location]).serialized_json
   end
 end
