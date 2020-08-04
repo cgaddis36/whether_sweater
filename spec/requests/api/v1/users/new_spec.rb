@@ -12,5 +12,6 @@ describe 'as a frontend developer' do
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
     expect(parsed_data[:data][:attributes][:email]).to eq(user_params[:email])
+    expect(parsed_data[:data][:attributes][:api_key]).to_not be_nil
   end
 end
