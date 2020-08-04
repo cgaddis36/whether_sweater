@@ -24,6 +24,8 @@ require 'rspec/rails'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
+SimpleCov.start 'rails'
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -61,4 +63,18 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  Shoulda::Matchers.configure do |config|
+   config.integrate do |with|
+     with.test_framework :rspec
+     with.library :rails
+   end
+ end
+end
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.default_cassette_options = { record: :new_episodes }
+  config.filter_sensitive_data('<SPOTIFY_CLIENT_ID>') { ENV['SPOTIFY_CLIENT_ID'] }
+  config.filter_sensitive_data('<SPOTIFY_CLIENT_SECRET>') { ENV['SPOTIFY_CLIENT_SECRET'] }
+  config.configure_rspec_metadata!
 end

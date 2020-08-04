@@ -11,9 +11,16 @@ class ForecastFacade
   private
 
   def forecast
+    weather_service
+  end
+
+  def weather_service
+    service = WeatherService.new
+    parsed_data = service.get_json(location_service)
+  end
+
+  def location_service
     service = LocationService.new
-    parsed = service.get_json(@location.downcase)
-    service1 = WeatherService.new
-    parsed_data = service1.get_json(parsed)
+    parsed = service.format_coordinates(@location.downcase)
   end
 end
