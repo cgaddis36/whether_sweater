@@ -8,7 +8,7 @@ describe 'as a user' do
               api_key: "7UdxBrPAlczXhKZuyytv1TcW4tGnbZ5i"
             }
 
-    post '/api/v1/road_trip', params: road_trip_params
+    get '/api/v1/road_trip', params: road_trip_params
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
