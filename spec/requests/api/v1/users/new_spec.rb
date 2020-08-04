@@ -13,5 +13,7 @@ describe 'as a frontend developer' do
 
     expect(parsed_data[:data][:attributes][:email]).to eq(user_params[:email])
     expect(parsed_data[:data][:attributes][:api_key]).to_not be_nil
+
+    expect(User.all.count).to eq(1)
   end
 end
