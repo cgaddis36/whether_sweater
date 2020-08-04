@@ -25,7 +25,7 @@ describe 'as a frontend developer' do
     post '/api/v1/users', params: user_params
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
-require "pry"; binding.pry
+
     expect(parsed_data[:data][:id]).to be_nil
 
 
