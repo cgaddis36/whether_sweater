@@ -13,5 +13,22 @@ describe 'as a frontend developer' do
 
     expect(parsed_data[:data][:attributes][:email]).to eq(user_params[:email])
     expect(parsed_data[:data][:attributes][:api_key]).to_not be_nil
+
+    expect(User.all.count).to eq(1)
+  end
+  it 'I cannot create a new user in the database if the passwords do not match' do
+    user_params = {
+              email: "whatever@example.com",
+              password: "password",
+              password_confirmation: "password1"
+            }
+    post '/api/v1/users', params: user_params
+
+    parsed_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed_data[0]).to eq("Password confirmation Passwords should match")
+    expect(parsed_data[-1]).to eq("Password confirmation doesn't match Password")
+
+    expect(User.all.count).to eq(0)
   end
 end

@@ -12,6 +12,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'pry'
 gem 'fast_jsonapi'
+gem 'bcrypt', '~> 3.1.7'
 
 group :test do
   gem 'shoulda-matchers'
