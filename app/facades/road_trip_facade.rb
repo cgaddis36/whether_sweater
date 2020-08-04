@@ -4,25 +4,25 @@ class RoadTripFacade
   end
 
   def serialized_json
-    RoadTripSerializer.new(format_response)
+    RoadTripSerializer.new(road_trip)
   end
 
   private
 
-  def format_response
+  def road_trip
     travel_time = time_service
     forecast = get_future_temp(travel_time)
     RoadTrip.new(travel_time, forecast)
   end
 
-  def parse_forecast(forecast)
-    forecast = forecast.to_json
-    forecast = JSON.parse(forecast)
-  end
-
   def time_service
     service = MapService.new
     service.get_time(@payload)
+  end
+
+  def parse_forecast(forecast)
+    forecast = forecast.to_json
+    forecast = JSON.parse(forecast)
   end
 
   def get_future_temp(travel_time)
