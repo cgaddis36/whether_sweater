@@ -21,6 +21,6 @@ class ForecastFacade
 
   def location_service
     service = LocationService.new
-    parsed = service.get_json(@location.downcase)
+    parsed = service.format_coordinates(@location.downcase)
   end
 end
