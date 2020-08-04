@@ -4,9 +4,7 @@ class UsersFacade
   end
 
   def serialized_json
-    if @user_params["password"] == @user_params["password_confirmation"]
-      user = User.create(email: @user_params["email"], api_key: SecureRandom.uuid)
-    end
+    user = User.create(@user_params)
     UsersSerializer.new(user)
   end
 end
