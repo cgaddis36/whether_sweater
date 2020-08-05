@@ -10,15 +10,15 @@ class ForecastFacade
   private
 
   def weather
-    Forecast.new(weather_service)
+    Forecast.new(weather_data)
   end
 
-  def weather_service
+  def weather_data
     service = WeatherService.new
-    service.get_json(location_service)
+    service.get_json(location_data)
   end
 
-  def location_service
+  def location_data
     service = MapService.new
     service.format_coordinates(@location.downcase)
   end
