@@ -7,6 +7,6 @@ describe 'as a user' do
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
-    expect(parsed_data[:data][:attributes][:url]).to_not be_nil
+    expect(parsed_data[:data][:attributes][:url]).to be_a(String)
   end
 end

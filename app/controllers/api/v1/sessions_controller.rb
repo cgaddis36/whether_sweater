@@ -10,10 +10,4 @@ class Api::V1::SessionsController < ApplicationController
      render json: "Incorrect password".to_json, status: :bad_request
    end
   end
-
-  private
-
-  def user_params
-    params.permit(:email, :password, :password_confirmation)
-  end
 end
