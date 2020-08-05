@@ -1,5 +1,5 @@
 class MapService
-  def format_coordinates(location)
+  def get_coordinates(location)
     parse_coordinates(location)
   end
 

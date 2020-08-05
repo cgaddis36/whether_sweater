@@ -18,6 +18,6 @@ class ForecastFacade
   end
 
   def location_data
-    MapService.new.format_coordinates(@location.downcase)
+    MapService.new.get_coordinates(@location.downcase)
   end
 end
