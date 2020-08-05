@@ -5,14 +5,18 @@ class MapService
   end
 
   def get_time(payload)
-    time = get_directions(payload)[:route][:realTime]
+    get_directions(payload)[:route][:realTime]
   end
 
   private
 
   def get_directions(payload)
     response = conn.get("/directions/v2/route", { key: payload["api_key"], from: payload["origin"], to: payload["destination"] })
-    parsed_data = JSON.parse(response.body, symbolize_names: true)
+    if response.status != 403
+      parsed_data = JSON.parse(response.body, symbolize_names: true)
+    else
+      raise Exception.new "API key invalid"
+    end
   end
 
   def get_location(location)
