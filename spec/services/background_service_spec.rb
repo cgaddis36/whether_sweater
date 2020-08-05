@@ -8,6 +8,6 @@ RSpec.describe "Backgrounds service" do
     json = service.get_json(location)
 
     expect(json[:results].count).to eq(10)
-    expect(json[:results][0][:urls][:raw]).to_not be_nil
+    expect(json[:results][0][:urls][:raw]).to be_a(String)
   end
 end
