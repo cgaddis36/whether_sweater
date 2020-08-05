@@ -11,7 +11,7 @@ class MapService
   private
 
   def get_directions(payload)
-    response = conn.get("/directions/v2/route", { key: payload["api_key"], from: payload["origin"], to: payload["destination"] })
+    response = conn.get("/directions/v2/route", { key: payload[:api_key], from: payload[:origin], to: payload[:destination] })
     if response.status != 403
       JSON.parse(response.body, symbolize_names: true)
     else
