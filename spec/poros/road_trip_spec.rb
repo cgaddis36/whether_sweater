@@ -17,8 +17,6 @@ RSpec.describe RoadTrip do
                "rain"=>{"1h"=>0.39}}
     time = 6311
 
-
-
     trip = RoadTrip.new(time, forecast)
 
     expect(trip).to be_a(RoadTrip)

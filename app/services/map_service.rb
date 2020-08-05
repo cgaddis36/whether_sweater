@@ -1,7 +1,6 @@
 class MapService
   def format_coordinates(location)
     parse_coordinates(location)
-
   end
 
   def get_time(payload)
