@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_204656) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "api_key", default: "104203ca-c48b-4b04-aff6-75d4f6d0e4ff"
+    t.string "api_key"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

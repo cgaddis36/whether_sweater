@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  validates_presence_of :email, :api_key
-  
+  has_secure_token :api_key
+
+  validates_presence_of :email
+
   validates :email, uniqueness: true, presence: true
 
   validates_confirmation_of :password, :message => "Passwords should match"
