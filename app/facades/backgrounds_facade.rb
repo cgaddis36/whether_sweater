@@ -14,7 +14,6 @@ class BackgroundsFacade
   end
 
   def parsed_backgrounds
-    service = BackgroundsService.new
-    service.get_json(@location.downcase)
+    BackgroundsService.new.get_json(@location.downcase)
   end
 end
