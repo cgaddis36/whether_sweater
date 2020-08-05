@@ -22,7 +22,7 @@ class RoadTripFacade
 
   def parse_forecast(forecast)
     forecast = forecast.to_json
-    forecast = JSON.parse(forecast)
+    JSON.parse(forecast)
   end
 
   def get_future_temp(travel_time)
