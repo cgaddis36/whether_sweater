@@ -11,8 +11,7 @@ class RoadTripFacade
 
   def road_trip
     travel_time = time_service
-    forecast = get_future_temp(travel_time)
-    RoadTrip.new(travel_time, forecast)
+    RoadTrip.new(travel_time, get_future_temp(travel_time))
   end
 
   def time_service
