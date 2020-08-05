@@ -7,7 +7,7 @@ RSpec.describe "Weather service" do
     service = WeatherService.new
     json = service.get_json(location)
 
-    expect(json[:current]).to_not be_nil
-    expect(json[:hourly]).to_not be_nil
+    expect(json[:current]).to be_a(Hash)
+    expect(json[:hourly]).to be_a(Array)
   end
 end
