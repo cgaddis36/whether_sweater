@@ -1,14 +1,22 @@
 class MapService
   def format_coordinates(location)
-    data = get_location(location)
-    data[:results][0][:locations][0][:latLng]
+    parse_coordinates(location)
+
   end
 
   def get_time(payload)
-    get_directions(payload)[:route][:realTime]
+    parse_directions(payload)
   end
 
   private
+
+  def parse_coordinates(location)
+    get_location(location)[:results][0][:locations][0][:latLng]
+  end
+
+  def parse_directions(payload)
+    get_directions(payload)[:route][:realTime]
+  end
 
   def get_directions(payload)
     response = conn.get("/directions/v2/route", { key: payload[:api_key], from: payload[:origin], to: payload[:destination] })
