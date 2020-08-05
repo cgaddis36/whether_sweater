@@ -5,7 +5,7 @@ class BackgroundsFacade
 
   def serialized_json
     backgrounds_data = Backgrounds.new(backgrounds)
-    x = BackgroundsSerializer.new(backgrounds_data)
+    BackgroundsSerializer.new(backgrounds_data)
   end
 
   private
@@ -13,6 +13,6 @@ class BackgroundsFacade
   def backgrounds
     service = BackgroundsService.new
     parsed = service.get_json(@location.downcase)
-    parsed = parsed[:results]
+    parsed[:results]
   end
 end

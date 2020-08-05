@@ -25,7 +25,6 @@ describe 'as a frontend developer' do
     post '/api/v1/users', params: user_params
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
-
     expect(parsed_data[0]).to eq("Password confirmation Passwords should match")
     expect(parsed_data[-1]).to eq("Password confirmation doesn't match Password")
 

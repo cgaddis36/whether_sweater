@@ -1,7 +1,7 @@
 class WeatherService
   def get_json(location)
     response = conn.get("/data/2.5/onecall", {lat: location[:lat], lon: location[:lng], exclude: 'minutely', appid: ENV['OPEN_WEATHER_API_KEY'], units: 'imperial'})
-    parsed = JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private
