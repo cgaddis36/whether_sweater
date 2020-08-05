@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'as a user' do
-  it 'I can retrieve a background image to fit the current weather', :vcr do
+describe 'as a frontend developer' do
+  it 'I can retrieve the estimated travel time to a specific destination and the forecast on arrival', :vcr do
     road_trip_params = {
               origin: "Denver,CO",
               destination: "Pueblo,CO",
@@ -15,6 +15,14 @@ describe 'as a user' do
     expect(parsed_data[:data][:attributes][:travel_time]).to be_a(String)
     expect(parsed_data[:data][:attributes][:arrival_temp]).to be_a(Float)
     expect(parsed_data[:data][:attributes][:summary]).to be_a(String)
+  end
+  it 'I cannot retrieve the estimated travel time if the api_key is incorrect', :vcr do
+    road_trip_params = {
+              origin: "Denver,CO",
+              destination: "Pueblo,CO",
+              api_key: "12345"
+            }
 
+    assert_raises(Exception) {get '/api/v1/road_trip', params: road_trip_params}
   end
 end
