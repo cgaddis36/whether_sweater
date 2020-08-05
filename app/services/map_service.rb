@@ -5,8 +5,7 @@ class MapService
   end
 
   def get_time(payload)
-    data = get_directions(payload)
-    time = data[:route][:realTime]
+    time = get_directions(payload)[:route][:realTime]
   end
 
   private
