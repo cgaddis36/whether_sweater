@@ -11,6 +11,7 @@ gem 'faker'
 gem 'faraday'
 gem 'figaro'
 gem 'pry'
+gem 'travis'
 gem 'fast_jsonapi'
 gem 'bcrypt', '~> 3.1.7'
 
